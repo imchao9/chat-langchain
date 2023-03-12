@@ -12,10 +12,20 @@ from callback import QuestionGenCallbackHandler, StreamingLLMCallbackHandler
 from query_data import get_chain
 from schemas import ChatResponse
 
+import openai
+import traceback
+
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 vectorstore: Optional[VectorStore] = None
 
+logging.basicConfig(level=logging.DEBUG)
+
+import openai
+openai.proxy = {
+            "http": "http://127.0.0.1:7890",
+            "https": "http://127.0.0.1:7890"
+        }
 
 @app.on_event("startup")
 async def startup_event():
@@ -65,6 +75,8 @@ async def websocket_endpoint(websocket: WebSocket):
             logging.info("websocket disconnect")
             break
         except Exception as e:
+            traceback.print_exc()
+            logging.info("3333")
             logging.error(e)
             resp = ChatResponse(
                 sender="bot",
