@@ -1,0 +1,771 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>langchain.chains.conversation.base &#8212; 🦜🔗 LangChain 0.0.107</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="/_/static/css/badge_only.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script async="async" src="/_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/langchain/chains/conversation/base';</script>
+    <link rel="canonical" href="https://langchain.readthedocs.io/en/latest/_modules/langchain/chains/conversation/base.html" />
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="/_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2023-03-12T00:43:26Z", "builder": "sphinx", "canonical_url": null, "commit": "c9b5a30b", "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "_modules/langchain/chains/conversation/base", "programming_language": "words", "project": "langchain", "proxied_api_host": "/_", "source_suffix": ".ipynb", "subprojects": {}, "theme": "sphinx_book_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="/_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">🦜🔗 LangChain 0.0.107</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../getting_started/getting_started.html">Quickstart Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/prompts.html">Prompt Templates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/prompts/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/prompts/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/prompts/how_to_guides.html">How-To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/prompts/examples/custom_prompt_template.html">Create a custom prompt template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/prompts/examples/custom_example_selector.html">Create a custom example selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/prompts/examples/few_shot_examples.html">Provide few shot examples to a prompt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/prompts/examples/prompt_serialization.html">Prompt Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/prompts/examples/example_selectors.html">Example Selectors</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/prompts.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/prompt.html">PromptTemplates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/example_selector.html">Example Selector</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/llms.html">LLMs</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/llms/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/llms/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/llms/how_to_guides.html">How-To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../modules/llms/generic_how_to.html">Generic Functionality</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/examples/custom_llm.html">Custom LLM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/examples/fake_llm.html">Fake LLM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/examples/llm_caching.html">LLM Caching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/examples/llm_serialization.html">LLM Serialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/examples/token_usage_tracking.html">Token Usage Tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../modules/llms/integrations.html">Integrations</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/ai21.html">AI21</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/aleph_alpha.html">Aleph Alpha</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/anthropic_example.html">Anthropic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/azure_openai_example.html">Azure OpenAI LLM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/banana.html">Banana</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/cerebriumai_example.html">CerebriumAI LLM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/cohere.html">Cohere</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/deepinfra_example.html">DeepInfra LLM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/forefrontai_example.html">ForefrontAI LLM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/gooseai_example.html">GooseAI LLM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/huggingface_hub.html">Hugging Face Hub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/manifest.html">Manifest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/modal.html">Modal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/openai.html">OpenAI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/petals_example.html">Petals LLM Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/promptlayer_openai.html">PromptLayer OpenAI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/self_hosted_examples.html">Self-Hosted Models via Runhouse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/stochasticai.html">StochasticAI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/llms/integrations/writer.html">Writer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/llms/async_llm.html">Async API for LLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/llms/streaming_llm.html">Streaming with LLMs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/modules/llms.html">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/document_loaders.html">Document Loaders</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/document_loaders/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/document_loaders/how_to_guides.html">How To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/CoNLL-U.html">CoNLL-U</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/airbyte_json.html">Airbyte JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/azlyrics.html">AZLyrics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/college_confidential.html">College Confidential</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/copypaste.html">Copy Paste</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/csv.html">CSV Loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/directory_loader.html">Directory Loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/email.html">Email</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/evernote.html">EverNote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/facebook_chat.html">Facebook Chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/gcs_directory.html">GCS Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/gcs_file.html">GCS File Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/gitbook.html">GitBook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/googledrive.html">Google Drive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/gutenberg.html">Gutenberg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/hn.html">Hacker News</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/html.html">HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/ifixit.html">iFixit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/image.html">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/imsdb.html">IMSDb</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/markdown.html">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/microsoft_word.html">Microsoft Word</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/notebook.html">Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/notion.html">Notion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/obsidian.html">Obsidian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/online_pdf.html">Online PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/pdf.html">PDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/powerpoint.html">PowerPoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/readthedocs_documentation.html">ReadTheDocs Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/roam.html">Roam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/s3_directory.html">s3 Directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/s3_file.html">s3 File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/srt.html">Subtitle Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/telegram.html">Telegram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/unstructured_file.html">Unstructured File Loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/url.html">URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/web_base.html">Web Base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/word_document.html">Word Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/document_loaders/examples/youtube.html">YouTube</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/utils.html">Utils</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/utils/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/utils/how_to_guides.html">Generic Utilities</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/bash.html">Bash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/bing_search.html">Bing Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/google_search.html">Google Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/google_serper.html">Google Serper API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/ifttt.html">IFTTT WebHooks</a></li>
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/python.html">Python REPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/requests.html">Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/searx_search.html">SearxNG Search API</a></li>
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/serpapi.html">SerpAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/utils/examples/wolfram_alpha.html">Wolfram Alpha</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/utils.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/python.html">Python REPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/serpapi.html">SerpAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/searx_search.html">SearxNG Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/docstore.html">Docstore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/text_splitter.html">Text Splitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/embeddings.html">Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/vectorstore.html">VectorStores</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/indexes.html">Indexes</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/indexes/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/indexes/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/indexes/how_to_guides.html">How To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/examples/embeddings.html">Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/examples/hyde.html">Hypothetical Document Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/examples/textsplitter.html">Text Splitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/examples/vectorstores.html">VectorStores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/atlas.html">AtlasDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/chroma.html">Chroma</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/deeplake.html">Deep Lake</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/elasticsearch.html">ElasticSearch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/faiss.html">FAISS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/milvus.html">Milvus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/opensearch.html">OpenSearch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/pinecone.html">Pinecone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/qdrant.html">Qdrant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/vectorstore_examples/weaviate.html">Weaviate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/analyze_document.html">Analyze Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/chat_vector_db.html">Chat Vector DB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/graph_qa.html">Graph QA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/qa_with_sources.html">Question Answering with Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/question_answering.html">Question Answering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/summarize.html">Summarization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/vector_db_qa.html">Vector DB Question/Answering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/vector_db_qa_with_sources.html">VectorDB Question Answering with Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/indexes/chain_examples/vector_db_text_generation.html">Vector DB Text Generation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/chains.html">Chains</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/chains/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/chains/how_to_guides.html">How-To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../modules/chains/generic_how_to.html">Generic Chains</a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/generic/from_hub.html">Loading from LangChainHub</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/generic/llm_chain.html">LLM Chain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/generic/sequential_chains.html">Sequential Chains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/generic/serialization.html">Serialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/generic/transformation.html">Transformation Chain</a></li>
+</ul>
+</li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../modules/chains/utility_how_to.html">Utility Chains</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-18"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/api.html">API Chains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/constitutional_chain.html">Self-Critique Chain with Constitutional AI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/llm_bash.html">BashChain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/llm_checker.html">LLMCheckerChain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/llm_math.html">LLM Math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/llm_requests.html">LLMRequestsChain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/llm_summarization_checker.html">LLMSummarizationCheckerChain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/moderation.html">Moderation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/pal.html">PAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modules/chains/examples/sqlite.html">SQLite example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chains/async_chain.html">Async API for Chain</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/chains/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/modules/chains.html">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/agents.html">Agents</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-19"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/agents/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/agents/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/agents/how_to_guides.html">How-To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-20"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/agent_vectorstore.html">Agents and Vectorstores</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/async_agent.html">Async API for Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/custom_agent.html">Custom Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/custom_tools.html">Defining Custom Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/intermediate_steps.html">Intermediate Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/load_from_hub.html">Loading from LangChainHub</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/max_iterations.html">Max Iterations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/multi_input_tool.html">Multi Input Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/search_tools.html">Search Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/examples/serialization.html">Serialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/csv.html">CSV Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/json.html">JSON Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/openapi.html">OpenAPI Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/pandas.html">Pandas Dataframe Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/python.html">Python Agent</a></li>
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/sql_database.html">SQL Database Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/agent_toolkits/vectorstore.html">Vectorstore Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/implementations/mrkl.html">MRKL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/implementations/mrkl_chat.html">MRKL Chat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/implementations/react.html">ReAct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/agents/implementations/self_ask_with_search.html">Self Ask With Search</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/modules/agents.html">Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/memory.html">Memory</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-21"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/memory/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/memory/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/memory/how_to_guides.html">How-To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-22"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/types/buffer.html">ConversationBufferMemory</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/types/buffer_window.html">ConversationBufferWindowMemory</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/types/entity_summary_memory.html">Entity Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/types/kg.html">Conversation Knowledge Graph Memory</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/types/summary.html">ConversationSummaryMemory</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/types/summary_buffer.html">ConversationSummaryBufferMemory</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/adding_memory.html">Adding Memory To an LLMChain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/adding_memory_chain_multiple_inputs.html">Adding Memory to a Multi-Input Chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/agent_with_memory.html">Adding Memory to an Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/chatgpt_clone.html">ChatGPT Clone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/conversational_agent.html">Conversation Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/conversational_customization.html">Conversational Memory Customization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/custom_memory.html">Custom Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/memory/examples/multiple_memory.html">Multiple Memory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../modules/chat.html">Chat</a><input class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-23"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/chat/getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../modules/chat/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../modules/chat/how_to_guides.html">How-To Guides</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-24"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/agent.html">Agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/chat_vector_db.html">Chat Vector DB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/few_shot_examples.html">Few Shot Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/memory.html">Memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/promptlayer_chatopenai.html">PromptLayer ChatOpenAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/streaming.html">Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/vector_db_qa.html">Vector DB Question/Answering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../modules/chat/examples/vector_db_qa_with_sources.html">VectorDB Question Answering with Sources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Use Cases</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/agents.html">Agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/chatbots.html">Chatbots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/generate_examples.html">Generate Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/combine_docs.html">Data Augmented Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/question_answering.html">Question Answering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/summarization.html">Summarization</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../use_cases/evaluation.html">Evaluation</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-25"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../use_cases/evaluation/data_augmented_question_answering.html">Data Augmented Question Answering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../use_cases/evaluation/huggingface_datasets.html">Using Hugging Face Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../use_cases/evaluation/question_answering.html">Question Answering</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../use_cases/model_laboratory.html">Model Comparison</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../reference/integrations.html">Integrations</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../reference.html">API References</a><input class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-26"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/prompts.html">Prompts</a><input class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-27"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/prompt.html">PromptTemplates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/example_selector.html">Example Selector</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../reference/utils.html">Utilities</a><input class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-28"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/python.html">Python REPL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/serpapi.html">SerpAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/searx_search.html">SearxNG Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/docstore.html">Docstore</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/text_splitter.html">Text Splitter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/embeddings.html">Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../reference/modules/vectorstore.html">VectorStores</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/modules/chains.html">Chains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../reference/modules/agents.html">Agents</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ecosystem</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../ecosystem.html">LangChain Ecosystem</a><input class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-29"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/ai21.html">AI21 Labs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/atlas.html">AtlasDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/bananadev.html">Banana</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/cerebriumai.html">CerebriumAI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/chroma.html">Chroma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/cohere.html">Cohere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/deepinfra.html">DeepInfra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/deeplake.html">Deep Lake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/forefrontai.html">ForefrontAI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/google_search.html">Google Search Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/google_serper.html">Google Serper Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/gooseai.html">GooseAI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/graphsignal.html">Graphsignal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/hazy_research.html">Hazy Research</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/helicone.html">Helicone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/huggingface.html">Hugging Face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/modal.html">Modal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/nlpcloud.html">NLPCloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/openai.html">OpenAI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/opensearch.html">OpenSearch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/petals.html">Petals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/pinecone.html">Pinecone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/promptlayer.html">PromptLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/runhouse.html">Runhouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/searx.html">SearxNG Search API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/serpapi.html">SerpAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/stochasticai.html">StochasticAI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/unstructured.html">Unstructured</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/weaviate.html">Weaviate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/wolfram_alpha.html">Wolfram Alpha Wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../ecosystem/writer.html">Writer</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/hwchase17/langchain-hub">LangChainHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../gallery.html">LangChain Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../deployments.html">Deployments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tracing.html">Tracing</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://discord.gg/6adMQxSpJS">Discord</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://forms.gle/57d8AmXBYp8PP8tZA">Production Support</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+  <div id="ethical-ad-placement"
+       class="flat"
+       data-ea-publisher="readthedocs"
+       data-ea-type="readthedocs-sidebar"
+       data-ea-manual="true">
+  </div>
+</div>
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/hwchase17/langchain" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for langchain.chains.conversation.base</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Chain that carries on a conversation and calls an LLM.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Extra</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">root_validator</span>
+
+<span class="kn">from</span> <span class="nn">langchain.chains.conversation.prompt</span> <span class="kn">import</span> <span class="n">PROMPT</span>
+<span class="kn">from</span> <span class="nn">langchain.chains.llm</span> <span class="kn">import</span> <span class="n">LLMChain</span>
+<span class="kn">from</span> <span class="nn">langchain.memory.buffer</span> <span class="kn">import</span> <span class="n">ConversationBufferMemory</span>
+<span class="kn">from</span> <span class="nn">langchain.prompts.base</span> <span class="kn">import</span> <span class="n">BasePromptTemplate</span>
+<span class="kn">from</span> <span class="nn">langchain.schema</span> <span class="kn">import</span> <span class="n">BaseMemory</span>
+
+
+<div class="viewcode-block" id="ConversationChain"><a class="viewcode-back" href="../../../../reference/modules/chains.html#langchain.chains.ConversationChain">[docs]</a><span class="k">class</span> <span class="nc">ConversationChain</span><span class="p">(</span><span class="n">LLMChain</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Chain to have a conversation and load context from memory.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from langchain import ConversationChain, OpenAI</span>
+<span class="sd">            conversation = ConversationChain(llm=OpenAI())</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">memory</span><span class="p">:</span> <span class="n">BaseMemory</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">ConversationBufferMemory</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Default memory store.&quot;&quot;&quot;</span>
+    <span class="n">prompt</span><span class="p">:</span> <span class="n">BasePromptTemplate</span> <span class="o">=</span> <span class="n">PROMPT</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Default conversation prompt to use.&quot;&quot;&quot;</span>
+
+    <span class="n">input_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;input&quot;</span>  <span class="c1">#: :meta private:</span>
+    <span class="n">output_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;response&quot;</span>  <span class="c1">#: :meta private:</span>
+
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Configuration for this pydantic object.&quot;&quot;&quot;</span>
+
+        <span class="n">extra</span> <span class="o">=</span> <span class="n">Extra</span><span class="o">.</span><span class="n">forbid</span>
+        <span class="n">arbitrary_types_allowed</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">input_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Use this since so some prompt vars come from history.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">input_key</span><span class="p">]</span>
+
+    <span class="nd">@root_validator</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">validate_prompt_input_variables</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that prompt input variables are consistent.&quot;&quot;&quot;</span>
+        <span class="n">memory_keys</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;memory&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">memory_variables</span>
+        <span class="n">input_key</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;input_key&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">input_key</span> <span class="ow">in</span> <span class="n">memory_keys</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The input key </span><span class="si">{</span><span class="n">input_key</span><span class="si">}</span><span class="s2"> was also found in the memory keys &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">memory_keys</span><span class="si">}</span><span class="s2">) - please provide keys that don&#39;t overlap.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">prompt_variables</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;prompt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">input_variables</span>
+        <span class="n">expected_keys</span> <span class="o">=</span> <span class="n">memory_keys</span> <span class="o">+</span> <span class="p">[</span><span class="n">input_key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">set</span><span class="p">(</span><span class="n">expected_keys</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">set</span><span class="p">(</span><span class="n">prompt_variables</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Got unexpected prompt input variables. The prompt expects &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prompt_variables</span><span class="si">}</span><span class="s2">, but got </span><span class="si">{</span><span class="n">memory_keys</span><span class="si">}</span><span class="s2"> as inputs from &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;memory, and </span><span class="si">{</span><span class="n">input_key</span><span class="si">}</span><span class="s2"> as the normal input key.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">values</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Harrison Chase
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022, Harrison Chase.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Mar 12, 2023.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
